@@ -7,15 +7,14 @@ export const siteData = {
   subtitle:
     "Consumer electronics · Wearables · Smart glasses · VR · Smartphones · Aerospace · Embedded systems",
   positioning:
-    "I lead complex hardware and systems architecture from early technology investigation through scalable product execution, with deep experience across electrical design, firmware integration, power architecture, validation, automation, and cross-functional execution.",
+    "I lead complex hardware design and systems architecture from early technology investigation through scalable product execution, with deep experience across electrical design, firmware integration, power architecture, validation, automation, and cross-functional execution.",
   linkedin: "https://www.linkedin.com/in/mihk101",
-  email: "[add-public-email@domain.com]", // TODO: Replace with your public email
-  resumeUrl: "", // TODO: Add a link to a downloadable PDF resume
+  email: "[searing_pythons_0v@icloud.com]", // TODO: Replace with your public email
 };
 
 export const about = {
   paragraphs: [
-    "Staff-level hardware and systems architecture leader with 18+ years of experience spanning consumer electronics, wearables, smart glasses, VR, smartphones, aerospace, and embedded systems.",
+    "Staff-level hardware and systems architecture leader with 18+ years of experience spanning consumer electronics, wearables, smartphones, smart glasses, VR, aerospace, and embedded systems.",
     "Across Meta, Apple, AeroVironment, and earlier engineering roles, I have led system architecture, new technology investigations (NTI), product integration, power systems, mixed-signal design, embedded firmware, automation, and cross-functional execution — from early feasibility through high-volume manufacturing.",
     "I enjoy difficult hands-on engineering problems and use personal projects to stay sharp across hardware, firmware, systems, and software. Whether it's reverse-engineering a legacy lighting control protocol, building a multi-zone audio platform, or designing a motor controller for a UAV, I bring the same rigor to personal work that I bring to production systems.",
   ],
@@ -242,7 +241,7 @@ export const honors = [
     icon: "award",
   },
   {
-    title: "Former Secret Security Clearance",
+    title: "Former Security Clearance",
     description: "Held from 2011, now expired",
     icon: "shield",
   },
