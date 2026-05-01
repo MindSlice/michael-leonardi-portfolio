@@ -2,14 +2,19 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, Router as WouterRouter } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
 import Analytics from "./pages/Analytics";
 
-function Router() {
+// Vite injects the base path at build time via import.meta.env.BASE_URL
+// In dev: "/"  |  GitHub Pages subdirectory: "/michael-leonardi-portfolio/"
+// Custom domain: "/"
+const BASE = import.meta.env.BASE_URL ?? "/";
+
+function Routes() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
@@ -27,7 +32,10 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
-          <Router />
+          {/* WouterRouter with base strips the prefix so routes stay clean ("/", "/project/:id") */}
+          <WouterRouter base={BASE.replace(/\/$/, "")}>
+            <Routes />
+          </WouterRouter>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
