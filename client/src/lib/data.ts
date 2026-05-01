@@ -7,7 +7,7 @@ export const siteData = {
   subtitle:
     "Consumer electronics · Wearables · Smart glasses · VR · Smartphones · Aerospace · Embedded systems",
   positioning:
-    "I lead end-to-end hardware architecture and system design, transitioning concepts from initial R&D to high-volume production. Proven track record of delivering robust analog/digital circuits, high-efficiency power architectures, and integrated firmware solutions through working cross-functionally or sometimes with contract manufacturers delivering solutions through rigorous validation and mass-market deployment.",
+    "I lead end-to-end hardware architecture and system design, taking concepts from early R&D through high-volume production. I've delivered complex analog and digital systems, high-efficiency power architectures, and tightly integrated firmware by driving cross-functional execution, vendor alignment, and rigorous validation through mass-market deployment.",
   linkedin: "https://www.linkedin.com/in/mihk101",
   email: "searing_pythons_0v@icloud.com",
 };
