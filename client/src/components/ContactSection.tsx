@@ -110,38 +110,7 @@ export default function ContactSection() {
                 className="text-xs"
                 style={{ color: "#64748B", fontFamily: "'JetBrains Mono', monospace" }}
               >
-                [add-public-email@domain.com]
-              </span>
-            </div>
-          </motion.div>
-
-          {/* Resume download placeholder */}
-          <motion.div
-            className="ds-card p-6 flex flex-col items-start gap-4"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ delay: 0.26, duration: 0.5, ease: EASE }}
-          >
-            <div
-              className="flex items-center justify-center w-10 h-10 rounded-lg"
-              style={{
-                background: "rgba(139,92,246,0.12)",
-                color: "#8B5CF6",
-                border: "1px solid rgba(139,92,246,0.25)",
-              }}
-            >
-              <FileDown size={18} />
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-white mb-1">Resume</p>
-              <p className="text-xs text-slate-500 mb-2">Downloadable PDF</p>
-              {/* TODO: Add resumeUrl in data.ts and enable this link */}
-              <span
-                className="text-xs"
-                style={{ color: "#64748B", fontFamily: "'JetBrains Mono', monospace" }}
-              >
-                [add resume PDF link]
+                [searing_pythons_0v@icloud.com]
               </span>
             </div>
           </motion.div>
