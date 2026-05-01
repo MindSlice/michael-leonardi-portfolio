@@ -15,7 +15,7 @@ export const siteData = {
 export const about = {
   paragraphs: [
     "Staff-level hardware and systems architecture leader with 18+ years of experience spanning consumer electronics, wearables, smartphones, smart glasses, VR, aerospace, and embedded systems.",
-    "Across Meta, Apple, AeroVironment, and earlier engineering roles, I have led system architecture, new technology investigations (NTI), product integration, power systems, mixed-signal design, embedded firmware, automation, and cross-functional execution — from early feasibility through high-volume manufacturing.",
+    "Across Meta, Apple, AeroVironment, and earlier engineering roles, I have led system architecture, new technology investigations (NTI), product integration, power systems, mixed-signal design, embedded firmware, automation, and cross-functional execution — from early feasibility through high-volume manufacturing. I regularly lead and task engineering teams, drive technical direction across disciplines, and operate effectively at both the individual contributor and leadership level — often simultaneously.",
     "I enjoy difficult hands-on engineering problems and use personal projects to stay sharp across hardware, firmware, systems, and software. Whether it's reverse-engineering a legacy lighting control protocol, building a multi-zone audio platform, or designing a motor controller for a UAV, I bring the same rigor to personal work that I bring to production systems.",
   ],
   highlights: [
@@ -23,6 +23,50 @@ export const about = {
     { label: "5", description: "Major employers" },
     { label: "Meta · Apple · AeroVironment", description: "Key companies" },
     { label: "Staff-Level", description: "Engineering leadership" },
+  ],
+};
+
+// Engineering Approach section
+export const engineeringApproach = {
+  intro:
+    "My approach to engineering is shaped by a belief that clarity, structure, and ownership are force multipliers. The best technical outcomes come from teams that know exactly what they're solving, why it matters, and who is accountable for each piece.",
+  principles: [
+    {
+      title: "Reduce Ambiguity Early",
+      icon: "target",
+      color: "#3B82F6",
+      body: "I invest heavily upfront in defining the problem space — establishing decision criteria, identifying constraints, and aligning stakeholders before significant engineering effort begins. This prevents the most expensive form of rework: building the wrong thing well.",
+    },
+    {
+      title: "Structured Architecture & Decision Frameworks",
+      icon: "layers",
+      color: "#06B6D4",
+      body: "I use explicit architecture reviews, decision logs, and tradeoff matrices to make technical choices visible and defensible. This creates a shared foundation that lets teams move fast without re-litigating decisions at every milestone.",
+    },
+    {
+      title: "Clear Ownership, Parallel Execution",
+      icon: "git-branch",
+      color: "#8B5CF6",
+      body: "I structure programs so that workstreams can run in parallel with minimal blocking dependencies. I assign clear DRIs, define interfaces early, and use structured check-ins to surface issues before they become schedule risks.",
+    },
+    {
+      title: "Technical Leadership Without the Title",
+      icon: "users",
+      color: "#10B981",
+      body: "Across my career I have led and technically directed engineers, contractors, and cross-functional partners — often without formal management authority. I earn alignment through technical credibility, clear communication, and consistent follow-through.",
+    },
+    {
+      title: "Data-Driven Feasibility",
+      icon: "bar-chart",
+      color: "#F59E0B",
+      body: "I build automation and post-processing frameworks to turn raw test data into structured feasibility conclusions. This replaces gut-feel decisions with evidence, accelerates executive reviews, and creates a reusable foundation for future investigations.",
+    },
+    {
+      title: "Rigor at Every Scale",
+      icon: "shield-check",
+      color: "#3B82F6",
+      body: "Whether designing a 350W motor controller for a UAV, integrating a new sensor into an iPhone, or reverse-engineering a legacy home automation protocol, I apply the same discipline: understand the system, define the constraints, validate the assumptions, and deliver something that works.",
+    },
   ],
 };
 

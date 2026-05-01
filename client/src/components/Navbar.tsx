@@ -6,6 +6,7 @@ import { siteData } from "@/lib/data";
 
 const navLinks = [
   { label: "About", href: "#about" },
+  { label: "Approach", href: "#approach" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
