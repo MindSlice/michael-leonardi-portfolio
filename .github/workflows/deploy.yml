@@ -27,7 +27,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          run_install: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -40,6 +40,13 @@ jobs:
 
       - name: Build
         run: pnpm build
+        env:
+          GITHUB_PAGES: "true"
+          # To use a custom domain instead, set:
+          # VITE_BASE_URL: "/"
+
+      - name: Create 404.html for SPA routing
+        run: cp dist/public/index.html dist/public/404.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
