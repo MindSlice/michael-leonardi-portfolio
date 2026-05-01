@@ -11,8 +11,11 @@ import SkillsSection from "@/components/SkillsSection";
 import EducationSection from "@/components/EducationSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import ChatWidget from "@/components/ChatWidget";
+import { usePageTracking } from "@/hooks/usePageTracking";
 
 export default function Home() {
+  usePageTracking("/");
   return (
     <div
       className="min-h-screen"
@@ -29,6 +32,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
+      <ChatWidget />
     </div>
   );
 }
