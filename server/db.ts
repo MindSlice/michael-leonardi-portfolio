@@ -1,4 +1,4 @@
-import { and, count, desc, eq, gte, sql } from "drizzle-orm";
+import { and, count, desc, eq, gte, sql, lt } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, chatMessages, pageViews, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
@@ -185,18 +185,119 @@ export async function getAnalyticsSummary() {
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
   const recentResult = await db
     .select({
-      day: sql<string>`DATE(${pageViews.createdAt})`,
+      day: sql<string>`DATE(createdAt)`,
       views: count(),
     })
     .from(pageViews)
     .where(gte(pageViews.createdAt, thirtyDaysAgo))
-    .groupBy(sql`DATE(${pageViews.createdAt})`)
-    .orderBy(sql`DATE(${pageViews.createdAt})`);
+    .groupBy(sql`DATE(createdAt)`)
+    .orderBy(sql`DATE(createdAt)`);
 
   return {
     totalViews,
     uniqueVisitors,
     topPages: topPagesResult,
     recentDays: recentResult,
+  };
+}
+
+// ── Recent Chat Messages (admin) ──────────────────────────────────────────
+
+export async function getRecentMessages(limit = 50) {
+  const db = await getDb();
+  if (!db) return [];
+  return db
+    .select()
+    .from(chatMessages)
+    .orderBy(desc(chatMessages.createdAt))
+    .limit(limit);
+}
+
+// ── Extended Analytics (admin) ────────────────────────────────────────────
+
+export async function getAnalyticsFull() {
+  const db = await getDb();
+  if (!db) {
+    return {
+      totalViews: 0,
+      uniqueVisitors: 0,
+      todayViews: 0,
+      weekViews: 0,
+      topPages: [] as { path: string; views: number }[],
+      recentDays: [] as { day: string; views: number }[],
+      topReferrers: [] as { referrer: string | null; views: number }[],
+      totalMessages: 0,
+    };
+  }
+
+  // Total views
+  const [totalResult] = await db.select({ total: count() }).from(pageViews);
+  const totalViews = totalResult?.total ?? 0;
+
+  // Unique visitors (by hashed IP)
+  const uniqueResult = await db
+    .select({ ipHash: pageViews.ipHash })
+    .from(pageViews)
+    .groupBy(pageViews.ipHash);
+  const uniqueVisitors = uniqueResult.length;
+
+  // Today's views
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
+  const [todayResult] = await db
+    .select({ total: count() })
+    .from(pageViews)
+    .where(gte(pageViews.createdAt, todayStart));
+  const todayViews = todayResult?.total ?? 0;
+
+  // This week's views
+  const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+  const [weekResult] = await db
+    .select({ total: count() })
+    .from(pageViews)
+    .where(gte(pageViews.createdAt, weekAgo));
+  const weekViews = weekResult?.total ?? 0;
+
+  // Top pages
+  const topPagesResult = await db
+    .select({ path: pageViews.path, views: count() })
+    .from(pageViews)
+    .groupBy(pageViews.path)
+    .orderBy(desc(count()))
+    .limit(10);
+
+  // 30-day daily breakdown
+  const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+  const recentResult = await db
+    .select({
+      day: sql<string>`DATE(createdAt)`,
+      views: count(),
+    })
+    .from(pageViews)
+    .where(gte(pageViews.createdAt, thirtyDaysAgo))
+    .groupBy(sql`DATE(createdAt)`)
+    .orderBy(sql`DATE(createdAt)`);
+
+  // Top referrers
+  const topReferrersResult = await db
+    .select({ referrer: pageViews.referrer, views: count() })
+    .from(pageViews)
+    .groupBy(pageViews.referrer)
+    .orderBy(desc(count()))
+    .limit(10);
+
+  // Total chat messages
+  const [msgResult] = await db.select({ total: count() }).from(chatMessages);
+  const totalMessages = msgResult?.total ?? 0;
+
+  return {
+    totalViews,
+    uniqueVisitors,
+    todayViews,
+    weekViews,
+    topPages: topPagesResult,
+    recentDays: recentResult,
+    topReferrers: topReferrersResult,
+    totalMessages,
   };
 }

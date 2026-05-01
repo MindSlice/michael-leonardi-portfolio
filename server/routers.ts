@@ -3,10 +3,12 @@ import { z } from "zod";
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router } from "./_core/trpc";
+import { adminProcedure, publicProcedure, router } from "./_core/trpc";
 import { notifyOwner } from "./_core/notification";
 import {
+  getAnalyticsFull,
   getAnalyticsSummary,
+  getRecentMessages,
   insertChatMessage,
   isRateLimited,
   recordPageView,
@@ -152,11 +154,24 @@ export const appRouter = router({
       }),
 
     /**
-     * Get analytics summary (owner-only in production, but public for now).
-     * TODO: Wrap in protectedProcedure + admin check if you want to restrict access.
+     * Public summary — used for lightweight tracking checks.
      */
     summary: publicProcedure.query(async () => {
       return await getAnalyticsSummary();
+    }),
+
+    /**
+     * Full analytics data — admin only.
+     */
+    full: adminProcedure.query(async () => {
+      return await getAnalyticsFull();
+    }),
+
+    /**
+     * Recent contact messages — admin only.
+     */
+    messages: adminProcedure.query(async () => {
+      return await getRecentMessages(50);
     }),
   }),
 });
