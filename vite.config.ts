@@ -152,7 +152,15 @@ function vitePluginManusDebugCollector(): Plugin {
 
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector()];
 
+// Base URL configuration:
+// - For GitHub Pages subdirectory (github.io/michael-leonardi-portfolio): set VITE_BASE_URL=/michael-leonardi-portfolio/
+// - For custom domain at root (e.g. michaelleonardi.dev): set VITE_BASE_URL=/ or leave unset
+// The GITHUB_PAGES env var is set automatically by the deploy workflow.
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+const base = process.env.VITE_BASE_URL || (isGitHubPages ? '/michael-leonardi-portfolio/' : '/');
+
 export default defineConfig({
+  base,
   plugins,
   resolve: {
     alias: {
