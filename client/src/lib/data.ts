@@ -7,7 +7,7 @@ export const siteData = {
   subtitle:
     "Consumer electronics · Wearables · Smart glasses · VR · Smartphones · Aerospace · Embedded systems",
   positioning:
-    "I lead complex hardware design and systems architecture from early technology investigation through scalable product execution, with deep experience across electrical design, firmware integration, power architecture, validation, automation, and cross-functional execution.",
+    "I lead complex hardware design and systems architecture from early technology investigation through scalable product execution, with deep experience working cross-functinoally across system design, in-depth analog & digital circuits, power architecture, firmware design, and bring-up / validation throughout program executino.",
   linkedin: "https://www.linkedin.com/in/mihk101",
   email: "[searing_pythons_0v@icloud.com]", // TODO: Replace with your public email
 };
