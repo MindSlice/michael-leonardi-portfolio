@@ -1,8 +1,7 @@
 // Deep Signal — Contact Section
-// Clean contact card with LinkedIn, email placeholder, and resume download placeholder
 import { motion } from "framer-motion";
 import type { Easing } from "framer-motion";
-import { Linkedin, Mail, FileDown, ExternalLink } from "lucide-react";
+import { Linkedin, Mail, ExternalLink } from "lucide-react";
 import { siteData } from "@/lib/data";
 
 const EASE: Easing = "easeOut";
@@ -49,7 +48,7 @@ export default function ContactSection() {
           collaboration. LinkedIn is the best way to reach me.
         </motion.p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-3xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl">
           {/* LinkedIn */}
           <motion.a
             href={siteData.linkedin}
@@ -84,9 +83,10 @@ export default function ContactSection() {
             </div>
           </motion.a>
 
-          {/* Email placeholder */}
-          <motion.div
-            className="ds-card p-6 flex flex-col items-start gap-4"
+          {/* Email — clickable mailto link */}
+          <motion.a
+            href={`mailto:${siteData.email}`}
+            className="ds-card p-6 flex flex-col items-start gap-4 group"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
@@ -104,16 +104,16 @@ export default function ContactSection() {
             </div>
             <div>
               <p className="text-sm font-semibold text-white mb-1">Email</p>
-              <p className="text-xs text-slate-500 mb-2">Public contact email</p>
-              {/* TODO: Replace with your public email address */}
+              <p className="text-xs text-slate-500 mb-2">Click to send a message</p>
               <span
-                className="text-xs"
-                style={{ color: "#64748B", fontFamily: "'JetBrains Mono', monospace" }}
+                className="text-xs flex items-center gap-1 group-hover:text-cyan-300 transition-colors"
+                style={{ color: "#06B6D4", fontFamily: "'JetBrains Mono', monospace" }}
               >
-                [searing_pythons_0v@icloud.com]
+                {siteData.email}
+                <ExternalLink size={11} />
               </span>
             </div>
-          </motion.div>
+          </motion.a>
         </div>
       </div>
     </section>

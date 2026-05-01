@@ -9,7 +9,7 @@ export const siteData = {
   positioning:
     "I lead end-to-end hardware architecture and system design, transitioning concepts from initial R&D to high-volume production. Proven track record of delivering robust analog/digital circuits, high-efficiency power architectures, and integrated firmware solutions through working cross-functionally or sometimes with contract manufacturers delivering solutions through rigorous validation and mass-market deployment.",
   linkedin: "https://www.linkedin.com/in/mihk101",
-  email: "[searing_pythons_0v@icloud.com]", // TODO: Replace with your public email
+  email: "searing_pythons_0v@icloud.com",
 };
 
 export const about = {
